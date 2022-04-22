@@ -5,6 +5,6 @@ export class Book {
     description: string;
     author: string;
     publisher: string;
-    pages: number;
+    pages: string;
     image_url: string;
 }
