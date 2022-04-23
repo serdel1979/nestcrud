@@ -2,7 +2,7 @@ import { Controller, Get, Param, Query, Req, Post, Body, Delete, Put } from '@ne
 import { BooksService } from './books.service';
 import { Request } from 'express';
 import { BookDto } from './book.dto';
-import { Book } from './book.class'
+import { Book } from './book.entity';
 
 @Controller('books')
 export class BooksController{
@@ -10,12 +10,12 @@ export class BooksController{
     constructor(private booksService: BooksService){}
 
     @Get()
-    findAll(@Req() request: Request):Book[]{
+    findAll(@Req() request: Request):Promise<Book[]>{
         return this.booksService.findAll(request.query);
     }
 
     @Post()
-    createBook(@Body()newBook: BookDto):Book{
+    createBook(@Body()newBook: BookDto):Promise<Book>{
         return this.booksService.createBook(newBook);
     }
 
@@ -26,14 +26,14 @@ export class BooksController{
 
 
     @Put(':bookId')
-    updateBook(@Param('bookId') bookId: string, @Body() body):Book{
+    updateBook(@Param('bookId') bookId: string, @Body() body):Promise<Book>{
         let newBook: BookDto = body;
         return this.booksService.updateBook(bookId,newBook);
     }
 
 
     @Get(':bookId')
-    findBook(@Param('bookId') bookId: string):Book{
+    findBook(@Param('bookId') bookId: string):Promise<Book>{
         return this.booksService.findBook(bookId);
     }
 

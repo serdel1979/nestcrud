@@ -3,9 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BooksService } from './books/books.service';
 import { BooksController } from './books/books.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { BooksModule } from './books/books.module';
 
 @Module({
-  imports: [],
+  imports: [
+    BooksModule,
+    TypeOrmModule.forRoot()
+  ],
   controllers: [AppController, BooksController],
   providers: [AppService, BooksService],
 })

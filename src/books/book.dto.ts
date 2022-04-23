@@ -4,6 +4,6 @@ export class BookDto {
     readonly description: string;
     readonly author: string;
     readonly publisher: string;
-    readonly pages: string;
+    readonly pages: number;
     readonly image_url: string;
 }
