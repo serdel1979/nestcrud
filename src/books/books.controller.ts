@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, Req, Post, Body, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Query, Req, Post, Body, Delete, Put } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { Request } from 'express';
 
@@ -22,6 +22,14 @@ export class BooksController{
     deleteBook(@Param('bookId') bookId: string){
         return this.booksService.deleteBook(bookId);
     }
+
+
+    @Put(':bookId')
+    updateBook(@Param('bookId') bookId: string, @Body() body){
+        let newBook: any = body;
+        return this.booksService.updateBook(bookId,newBook);
+    }
+
 
     @Get(':bookId')
     findBook(@Param('bookId') bookId: string){

@@ -20,9 +20,15 @@ export class BooksService {
         return newBook;
     }
 
-    
+
     deleteBook(bookId: string){
-        return `findBook funcionando con bookId: ${bookId}`;
+        return `deleteBook funcionando con bookId: ${bookId}`;
+    }
+
+
+
+    updateBook(bookId: string, newBook: any){
+        return newBook;
     }
 
 
